@@ -1,12 +1,12 @@
-import yaml
 import os
+import yaml
 
-def read_config():
-    config_path = os.path.join(os.path.dirname(__file__), '../config.yaml')
+class Server:
+    def __init__(self):
+        yaml_path = os.path.join(os.path.dirname(__file__), '../config.yaml')
+        with open(yaml_path, 'r') as file:
+            self.yaml = yaml.safe_load(file)
+      
+server = Server()
 
-    with open(config_path, 'r') as file:
-        config = yaml.safe_load(file)
-    return config
-
-config = read_config()
-print(config)
+print(server.yaml["serverIPAddress"])
